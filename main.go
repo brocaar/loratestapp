@@ -23,7 +23,7 @@ func run(c *cli.Context) {
 		log.Fatal(token.Error())
 	}
 
-	token := client.Subscribe("node/+/rx", 0, func(c *mqtt.Client, msg mqtt.Message) {
+	token := client.Subscribe("application/+/node/+/rx", 0, func(c *mqtt.Client, msg mqtt.Message) {
 		log.Printf("topic: %s, payload: %s", msg.Topic(), msg.Payload())
 	})
 	token.Wait()
